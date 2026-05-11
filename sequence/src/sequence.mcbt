@@ -3,7 +3,6 @@ template sequence {
 		<%%
 			let body = [];
 			for (const child of [...content.node.body].reverse()) {
-				console.log(child);
 				if (child.type === 'Raw') {
 					const [command, delay, mode, ...condition] = child.value.trim().split(' ');
 					if (command === 'sleep') {
