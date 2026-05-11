@@ -14,6 +14,8 @@ Set a score to it's absolute value.
 
 `abs <name> <objective>`
 
+> Equivalent to `execute if score <name> <objective> matches ..-1 run op <name> <objective> *= #-1 <config.internalScoreboardName>`
+
 ```mcb
 set #value -10
 abs #value myObjective
