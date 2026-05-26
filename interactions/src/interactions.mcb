@@ -49,7 +49,7 @@ REPEAT (['right', 'left']) as direction {
 				if data entity @s data.<%config.interactionsNamespace%>.on_<%direction%>_click \
 				store success score #check <%config.internalScoreboardName%> \
 				on <%direction === 'right' ? 'target' : 'attacker'%> \
-				if entity @s[tag=<%config.interactionsNamespace%>.interactions.interacting_player] \
+				if entity @s[tag=<%config.interactionsNamespace%>.interactions.interacting_player]
 
 			execute \
 				if score #check <%config.internalScoreboardName%> matches 1 \
