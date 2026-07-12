@@ -1,0 +1,106 @@
+import ./execute.mcbt
+
+<%%
+	global.subcommands = [
+		{
+			name: 'align',
+			commands: [
+				'align xyz'
+			],
+		},
+		{
+			name: 'anchored',
+			commands: [
+				'anchored eyes'
+			],
+		},
+		{
+			name: 'as',
+			commands: [
+				'as @a[tag=test]'
+			],
+		},
+		{
+			name: 'at',
+			commands: [
+				'at @a[tag=test]'
+			],
+		},
+		{
+			name: 'facing',
+			commands: [
+				'facing 0 0 0'
+			],
+		},
+		{
+			name: 'in',
+			commands: [
+				'in minecraft:overworld'
+			],
+		},
+		{
+			name: 'on',
+			commands: [
+				'on owner'
+			],
+		},
+		{
+			name: 'positioned',
+			commands: [
+				'positioned 0 0 0'
+			],
+		},
+		{
+			name: 'rotated',
+			commands: [
+				'rotated 0 0'
+			],
+		},
+		{
+			name: 'summon',
+			commands: [
+				'summon minecraft:pig'
+			],
+		},
+		{
+			name: 'if',
+			commands: [
+				'if entity @s'
+			],
+		},
+		{
+			name: 'unless',
+			commands: [
+				'unless entity @s'
+			],
+		},
+		{
+			name: 'store',
+			commands: [
+				'store result score @s test'
+			],
+		},
+	]
+%%>
+
+REPEAT(global.subcommands) as subcommand {
+	function <%subcommand.name%> {
+		<%%
+			for (command of subcommand.commands) {
+				emit.mcb(`${command} {\n\tsay ${subcommand.name}\n}\n#`)
+				emit.mcb(`${command} run {\n\tsay ${subcommand.name}\n}\n#`)
+				emit.mcb(`${command} run say ${subcommand.name}`)
+			}
+		%%>
+	}
+}
+
+function manual_test {
+	if score #check0 v matches 0 \
+		if score #check1 v matches 0 \
+		align xyz positioned ~.5 ~ ~.5 \
+		facing entity @s eyes \
+	run {
+		say "Manual test"
+	}
+}
