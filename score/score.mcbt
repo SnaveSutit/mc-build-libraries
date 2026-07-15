@@ -115,14 +115,6 @@ template abs {
 
 # Operations
 template op {
-	load {
-		<%%
-			global.score = {
-				defaultobjective: config.internalScoreboardName,
-			};
-		%%>
-	}
-
 	# Default objective
 	# op <name1> <operation> <name2>
 	with name1:word operation:word name2:word {
